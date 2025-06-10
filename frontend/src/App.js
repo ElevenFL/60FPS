@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import GameList from './components/games/GameList';
 import GameDetail from './components/games/GameDetail';
 import AuthForm from './components/auth/AuthForm';
+import AddGame from './components/games/AddGame';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                         <Route path="/" element={<GameList />} />
                         <Route path="/games" element={<GameList />} />
                         <Route path="/games/:id" element={<GameDetail />} />
+                        <Route path="/games/add" element={<AddGame />} />
                         <Route path="/login" element={<AuthForm isLogin={true} />} />
                         <Route path="/register" element={<AuthForm isLogin={false} />} />
                     </Routes>

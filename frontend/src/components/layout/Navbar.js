@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -21,6 +22,9 @@ const Navbar = () => {
                 <Link to="/games">Videojuegos</Link>
                 {user ? (
                     <>
+                        <Link to="/games/add" className="add-game-link">
+                            Agregar Videojuego
+                        </Link>
                         <Link to="/profile">Mi Perfil</Link>
                         <button onClick={handleLogout}>Cerrar Sesión</button>
                     </>

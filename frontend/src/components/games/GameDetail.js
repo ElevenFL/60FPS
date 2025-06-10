@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReviewList from '../reviews/ReviewList';
 import ReviewForm from '../reviews/ReviewForm';
+import './GameDetail.css';
 
 const GameDetail = () => {
     const { id } = useParams();
@@ -11,6 +12,8 @@ const GameDetail = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [showReviewForm, setShowReviewForm] = useState(false);
+    const [imageError, setImageError] = useState(false);
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
 
     useEffect(() => {
         fetchGame();
@@ -40,7 +43,11 @@ const GameDetail = () => {
         }
     };
 
-    if (loading) return <div>Cargando...</div>;
+    const handleImageError = () => {
+        setImageError(true);
+    };
+
+    if (loading) return <div className="loading">Cargando...</div>;
     if (error) return <div className="error-message">{error}</div>;
     if (!game) return <div>Videojuego no encontrado</div>;
 
@@ -59,21 +66,47 @@ const GameDetail = () => {
                 </div>
             </div>
 
+            {game.imageUrl && !imageError && (
+                <div className="game-image">
+                    <img 
+                        src={game.imageUrl} 
+                        alt={game.title}
+                        onError={handleImageError}
+                        loading="lazy"
+                    />
+                </div>
+            )}
+
+            {imageError && (
+                <div className="image-error">
+                    <p>No se pudo cargar la imagen del videojuego</p>
+                </div>
+            )}
+
             <div className="game-description">
                 <h2>Descripción</h2>
                 <p>{game.description}</p>
             </div>
 
             <div className="game-actions">
-                <button onClick={() => setShowReviewForm(!showReviewForm)}>
-                    {showReviewForm ? 'Cancelar Reseña' : 'Escribir Reseña'}
-                </button>
-                {localStorage.getItem('token') && (
+                {user && (
                     <>
-                        <button onClick={() => navigate(`/games/${id}/edit`)}>
+                        <button 
+                            onClick={() => setShowReviewForm(!showReviewForm)}
+                            className="review-button"
+                        >
+                            {showReviewForm ? 'Cancelar Reseña' : 'Escribir Reseña'}
+                        </button>
+                        <button 
+                            onClick={() => navigate(`/games/${id}/edit`)}
+                            className="edit-button"
+                        >
                             Editar Videojuego
                         </button>
-                        <button onClick={handleDelete} className="delete-button">
+                        <button 
+                            onClick={handleDelete} 
+                            className="delete-button"
+                        >
                             Eliminar Videojuego
                         </button>
                     </>

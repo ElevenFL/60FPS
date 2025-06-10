@@ -5,6 +5,7 @@ import GameList from './components/games/GameList';
 import GameDetail from './components/games/GameDetail';
 import AuthForm from './components/auth/AuthForm';
 import AddGame from './components/games/AddGame';
+import EditGame from './components/games/EditGame';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                         <Route path="/games" element={<GameList />} />
                         <Route path="/games/:id" element={<GameDetail />} />
                         <Route path="/games/add" element={<AddGame />} />
+                        <Route path="/games/:id/edit" element={<EditGame />} />
                         <Route path="/login" element={<AuthForm isLogin={true} />} />
                         <Route path="/register" element={<AuthForm isLogin={false} />} />
                     </Routes>

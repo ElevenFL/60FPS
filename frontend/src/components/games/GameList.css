@@ -36,7 +36,7 @@
     background-color: #64b820;
     color: white;
     padding: 12px 24px;
-    background-color: #64ffda;
+    background-color: #8dee1e;
     color: #121212;
     border: none;
     border-radius: 6px;
@@ -69,7 +69,7 @@
 
 .game-card:hover {
     transform: translateY(-4px);
-    border-color: #64ffda;
+    border-color: #8dee1e;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -96,7 +96,7 @@
 }
 
 .rating {
-    color: #64ffda;
+    color: #8dee1e;
     font-weight: 600;
 }
 
@@ -109,8 +109,8 @@
 .review-button {
     padding: 8px 16px;
     background-color: transparent;
-    color: #64ffda;
-    border: 1px solid #64ffda;
+    color: #8dee1e;
+    border: 1px solid #8dee1e;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;

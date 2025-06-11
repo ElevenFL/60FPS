@@ -24,7 +24,7 @@
 }
 
 .search-input:focus {
-    border-color: #64ffda;
+    border-color: #8dee1e;
     outline: none;
     box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
 }
@@ -35,7 +35,7 @@
 
 .search-button {
     padding: 12px 24px;
-    background-color: #64ffda;
+    background-color: #8dee1e;
     color: #121212;
     border: none;
     border-radius: 6px;
@@ -46,7 +46,7 @@
 }
 
 .search-button:hover {
-    background-color: #45e6c3;
+    background-color: #8dee1e;
     transform: translateY(-2px);
 }
 
@@ -77,7 +77,7 @@
 
 .search-result-item:hover {
     transform: translateY(-2px);
-    border-color: #64ffda;
+    border-color: #8dee1e;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 

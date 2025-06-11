@@ -45,7 +45,7 @@
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-    border-color: #64ffda;
+    border-color: #8dee1e;
     outline: none;
     box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
 }
@@ -94,12 +94,12 @@
 }
 
 .submit-button {
-    background-color: #64ffda;
+    background-color: #8dee1e;
     color: #121212;
 }
 
 .submit-button:hover {
-    background-color: #45e6c3;
+    background-color: #8dee1e;
     transform: translateY(-2px);
 }
 
@@ -118,8 +118,8 @@
 
 .cancel-button:hover {
     background-color: rgba(100, 255, 218, 0.1);
-    border-color: #64ffda;
-    color: #64ffda;
+    border-color: #8dee1e;
+    color: #8dee1e;
 }
 
 .error-message {

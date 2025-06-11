@@ -73,6 +73,18 @@ const GameList = () => {
                         onClick={(e) => handleGameClick(game._id, e)}
                     >
                         <h3>{game.title}</h3>
+
+                        {game.imageUrl ? (
+                            <div className="game-image">
+                                <img 
+                                    src={game.imageUrl} 
+                                    alt={game.title}
+                                    onError={(e) => e.currentTarget.style.display = 'none'} // oculta si falla imagen
+                                    loading="lazy"
+                                />
+                            </div>
+                        ) : null}
+
                         <p>{game.description}</p>
                         <div className="game-info">
                             <span>Género: {game.genre}</span>

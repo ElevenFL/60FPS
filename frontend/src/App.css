@@ -8,8 +8,13 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
+
+    background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgprighUp572TiK9AWWNHL8c6j3MEfBE1mt-5noqardfBJN-wuTXiZWUDD84ZvRbA85LLwDllpm_JmLOLGnBFjlv1M-Q2xQLD4Bwt53dUumZA00K4K-G3Sws70XPxwGoTsORJj8B2fAVC09/s16000/V1-01222021-INTERFACE-BACKGROUND-HD.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: #121212;
     color: #e0e0e0;
+
 }
 
 .container {
@@ -20,6 +25,8 @@ body {
 
 /* Navbar */
 .navbar {
+    background-color: #242424;
+    color: white;
     background-color: var(--color-bg-secondary);
     color: var(--color-text-primary);
     padding: 1rem;
@@ -88,6 +95,11 @@ body {
 }
 
 .game-card {
+
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.1);
     background: var(--color-bg-secondary);
     padding: var(--spacing-xl);
     border-radius: var(--border-radius-lg);

@@ -7,11 +7,23 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.logo {
+    height: 62px;
+    width: 62px;
+    object-fit: contain;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-brand a {
     color: #64ffda;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
+    padding: 12px;
 }
 
 .navbar-brand a:hover {
@@ -51,14 +63,14 @@
 }
 
 .add-game-link {
-    background-color: #3a3a3a86;
+    background-color: #5bb61e;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 .add-game-link:hover {
-    background-color: #64ffdbd2;
+    background-color: #176336;
     color: white !important;
 }
 

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ReviewForm from '../reviews/ReviewForm';
 import ReviewList from '../reviews/ReviewList';
 import './GameList.css';
 
 const GameList = () => {
+    const navigate = useNavigate();
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -39,6 +40,14 @@ const GameList = () => {
         }
     };
 
+    const handleGameClick = (gameId, e) => {
+        // Evitar la navegación si se hizo clic en el botón de reseña
+        if (e.target.closest('.review-button')) {
+            return;
+        }
+        navigate(`/games/${gameId}`);
+    };
+
     if (loading) return <div>Cargando...</div>;
     if (error) return <div className="error-message">{error}</div>;
 
@@ -58,7 +67,11 @@ const GameList = () => {
 
             <div className="games-grid">
                 {games.map(game => (
-                    <div key={game._id} className="game-card">
+                    <div 
+                        key={game._id} 
+                        className="game-card"
+                        onClick={(e) => handleGameClick(game._id, e)}
+                    >
                         <h3>{game.title}</h3>
 
                         {game.imageUrl ? (
@@ -82,9 +95,6 @@ const GameList = () => {
                             </div>
                         </div>
                         <div className="game-actions">
-                            <Link to={`/games/${game._id}`} className="view-details">
-                                Ver detalles
-                            </Link>
                             {user && (
                                 <button 
                                     onClick={() => {

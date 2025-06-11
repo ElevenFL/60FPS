@@ -1,105 +1,140 @@
 .add-game-container {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .add-game-container h2 {
-    color: #333;
-    margin-bottom: 20px;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
 .add-game-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.5rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .form-group label {
-    font-weight: bold;
-    color: #555;
+    font-weight: 600;
+    color: #b0b0b0;
 }
 
 .form-group input,
-.form-group select,
-.form-group textarea {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
+.form-group textarea,
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid #2d2d2d;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #64ffda;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #808080;
 }
 
 .form-group textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
 }
 
-.form-group select {
-    background-color: white;
+.image-preview {
+    margin-top: 1rem;
+    max-width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #2d2d2d;
+    padding: 0.5rem;
+}
+
+.image-preview img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
 .form-actions {
     display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-    margin-top: 20px;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .submit-button,
 .cancel-button {
-    padding: 10px 20px;
+    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .submit-button {
-    background-color: #28a745;
-    color: white;
+    background-color: #64ffda;
+    color: #121212;
 }
 
 .submit-button:hover {
-    background-color: #218838;
+    background-color: #45e6c3;
+    transform: translateY(-2px);
 }
 
 .submit-button:disabled {
-    background-color: #6c757d;
+    background-color: #2d2d2d;
+    color: #808080;
     cursor: not-allowed;
+    transform: none;
 }
 
 .cancel-button {
-    background-color: #dc3545;
-    color: white;
+    background-color: transparent;
+    color: #e0e0e0;
+    border: 1px solid #2d2d2d;
 }
 
 .cancel-button:hover {
-    background-color: #c82333;
+    background-color: rgba(100, 255, 218, 0.1);
+    border-color: #64ffda;
+    color: #64ffda;
 }
 
 .error-message {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 77, 77, 0.2);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .add-game-container {
-        margin: 10px;
-        padding: 15px;
+        margin: 1rem;
+        padding: 1rem;
     }
 
     .form-actions {

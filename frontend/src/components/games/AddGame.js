@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import GameSearch from './GameSearch';
 import './AddGame.css';
 
 const AddGame = () => {
@@ -21,6 +22,13 @@ const AddGame = () => {
         setFormData(prev => ({
             ...prev,
             [name]: value
+        }));
+    };
+
+    const handleGameSelect = (gameData) => {
+        setFormData(prev => ({
+            ...prev,
+            ...gameData
         }));
     };
 
@@ -52,6 +60,8 @@ const AddGame = () => {
         <div className="add-game-container">
             <h2>Agregar Nuevo Videojuego</h2>
             {error && <div className="error-message">{error}</div>}
+
+            <GameSearch onGameSelect={handleGameSelect} />
 
             <form onSubmit={handleSubmit} className="add-game-form">
                 <div className="form-group">
@@ -139,6 +149,15 @@ const AddGame = () => {
                         onChange={handleChange}
                         placeholder="Ingrese la URL de la imagen del videojuego"
                     />
+                    {formData.imageUrl && (
+                        <div className="image-preview">
+                            <img
+                                src={formData.imageUrl}
+                                alt="Vista previa"
+                                onError={(e) => e.target.style.display = 'none'}
+                            />
+                        </div>
+                    )}
                 </div>
 
                 <div className="form-actions">

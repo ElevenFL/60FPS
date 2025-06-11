@@ -21,6 +21,10 @@ const gameSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    imageUrl: {
+        type: String,
+        default: ''
+    },
     averageRating: {
         type: Number,
         default: 0,

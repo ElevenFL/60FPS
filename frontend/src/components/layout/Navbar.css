@@ -7,11 +7,23 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.logo {
+    height: 62px;
+    width: 62px;
+    object-fit: contain;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-brand a {
     color: white;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
+    padding: 12px;
 }
 
 .navbar-menu {
@@ -47,14 +59,14 @@
 }
 
 .add-game-link {
-    background-color: #27ae60;
+    background-color: #5bb61e;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 .add-game-link:hover {
-    background-color: #219a52;
+    background-color: #176336;
     color: white !important;
 }
 

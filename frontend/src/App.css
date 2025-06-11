@@ -8,7 +8,10 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    /* background-color: #999999; */
+    background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgprighUp572TiK9AWWNHL8c6j3MEfBE1mt-5noqardfBJN-wuTXiZWUDD84ZvRbA85LLwDllpm_JmLOLGnBFjlv1M-Q2xQLD4Bwt53dUumZA00K4K-G3Sws70XPxwGoTsORJj8B2fAVC09/s16000/V1-01222021-INTERFACE-BACKGROUND-HD.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -19,7 +22,7 @@ body {
 
 /* Navbar */
 .navbar {
-    background-color: #333;
+    background-color: #242424;
     color: white;
     padding: 1rem;
     display: flex;
@@ -81,10 +84,10 @@ body {
 }
 
 .game-card {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 6px rgba(0,0,0,0.1);
 }
 
 .game-card h3 {

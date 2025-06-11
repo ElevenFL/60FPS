@@ -8,10 +8,14 @@
 }
 
 .navbar-brand a {
-    color: white;
+    color: #64ffda;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.navbar-brand a:hover {
+    color: #ffffff;
 }
 
 .navbar-menu {
@@ -47,14 +51,14 @@
 }
 
 .add-game-link {
-    background-color: #27ae60;
+    background-color: #3a3a3a86;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 .add-game-link:hover {
-    background-color: #219a52;
+    background-color: #64ffdbd2;
     color: white !important;
 }
 

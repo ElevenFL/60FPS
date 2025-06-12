@@ -30,10 +30,14 @@ const AuthForm = ({ isLogin }) => {
                 }
             });
             
-            if (response.data.token) {
-                // Guardar token en localStorage
+            if (response.data.token && response.data.user) {
+                // Guardar token y usuario en localStorage
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('user', JSON.stringify(response.data.user));
+                localStorage.setItem('user', JSON.stringify({
+                    id: response.data.user.id,
+                    username: response.data.user.username,
+                    email: response.data.user.email
+                }));
                 
                 // Redirigir al usuario
                 navigate('/');

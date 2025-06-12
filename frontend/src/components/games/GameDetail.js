@@ -5,6 +5,8 @@ import ReviewList from '../reviews/ReviewList';
 import ReviewForm from '../reviews/ReviewForm';
 import './GameDetail.css';
 
+const DEFAULT_IMAGE = 'https://via.placeholder.com/400x225?text=No+Image+Available';
+
 const GameDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -21,11 +23,15 @@ const GameDetail = () => {
 
     const fetchGame = async () => {
         try {
+            setLoading(true);
+            setError('');
             const response = await axios.get(`/api/games/${id}`);
             setGame(response.data);
-            setLoading(false);
+            setImageError(false);
         } catch (error) {
-            setError('Error al cargar el videojuego');
+            console.error('Error al cargar el juego:', error);
+            setError(error.response?.data?.message || 'Error al cargar el videojuego');
+        } finally {
             setLoading(false);
         }
     };
@@ -38,7 +44,7 @@ const GameDetail = () => {
                 });
                 navigate('/games');
             } catch (error) {
-                setError('Error al eliminar el videojuego');
+                setError(error.response?.data?.message || 'Error al eliminar el videojuego');
             }
         }
     };
@@ -49,7 +55,7 @@ const GameDetail = () => {
 
     if (loading) return <div className="loading">Cargando...</div>;
     if (error) return <div className="error-message">{error}</div>;
-    if (!game) return <div>Videojuego no encontrado</div>;
+    if (!game) return <div className="error-message">Videojuego no encontrado</div>;
 
     return (
         <div className="game-detail">
@@ -61,27 +67,19 @@ const GameDetail = () => {
                     <span>Fecha de lanzamiento: {new Date(game.releaseDate).toLocaleDateString()}</span>
                 </div>
                 <div className="game-rating">
-                    <h3>Rating Promedio: {game.averageRating.toFixed(1)} ⭐</h3>
-                    <p>Total de reseñas: {game.totalReviews}</p>
+                    <h3>Rating Promedio: {game.averageRating?.toFixed(1) || '0.0'} ⭐</h3>
+                    <p>Total de reseñas: {game.totalReviews || 0}</p>
                 </div>
             </div>
 
-            {game.imageUrl && !imageError && (
-                <div className="game-image">
-                    <img 
-                        src={game.imageUrl} 
-                        alt={game.title}
-                        onError={handleImageError}
-                        loading="lazy"
-                    />
-                </div>
-            )}
-
-            {imageError && (
-                <div className="image-error">
-                    <p>No se pudo cargar la imagen del videojuego</p>
-                </div>
-            )}
+            <div className="game-image">
+                <img 
+                    src={imageError ? DEFAULT_IMAGE : (game.imageUrl || DEFAULT_IMAGE)} 
+                    alt={game.title}
+                    onError={handleImageError}
+                    loading="lazy"
+                />
+            </div>
 
             <div className="game-description">
                 <h2>Descripción</h2>

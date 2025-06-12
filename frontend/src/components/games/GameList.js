@@ -5,6 +5,8 @@ import ReviewForm from '../reviews/ReviewForm';
 import ReviewList from '../reviews/ReviewList';
 import './GameList.css';
 
+const DEFAULT_IMAGE = 'https://via.placeholder.com/300x169?text=No+Image+Available';
+
 const GameList = () => {
     const navigate = useNavigate();
     const [games, setGames] = useState([]);
@@ -48,6 +50,10 @@ const GameList = () => {
         navigate(`/games/${gameId}`);
     };
 
+    const handleImageError = (e) => {
+        e.target.src = DEFAULT_IMAGE;
+    };
+
     if (loading) return <div>Cargando...</div>;
     if (error) return <div className="error-message">{error}</div>;
 
@@ -68,30 +74,28 @@ const GameList = () => {
             <div className="games-grid">
                 {games.map(game => (
                     <div 
-                        key={game._id} 
+                        key={game.id} 
                         className="game-card"
-                        onClick={(e) => handleGameClick(game._id, e)}
+                        onClick={(e) => handleGameClick(game.id, e)}
                     >
                         <h3>{game.title}</h3>
 
-                        {game.imageUrl ? (
-                            <div className="game-image">
-                                <img 
-                                    src={game.imageUrl} 
-                                    alt={game.title}
-                                    onError={(e) => e.currentTarget.style.display = 'none'} // oculta si falla imagen
-                                    loading="lazy"
-                                />
-                            </div>
-                        ) : null}
+                        <div className="game-image">
+                            <img 
+                                src={game.imageUrl || DEFAULT_IMAGE} 
+                                alt={game.title}
+                                onError={handleImageError}
+                                loading="lazy"
+                            />
+                        </div>
 
                         <p>{game.description}</p>
                         <div className="game-info">
                             <span>Género: {game.genre}</span>
                             <span>Plataforma: {game.platform}</span>
                             <div className="rating">
-                                Rating: {game.averageRating.toFixed(1)} ⭐
-                                ({game.totalReviews} reseñas)
+                                Rating: {game.averageRating?.toFixed(1) || '0.0'} ⭐
+                                ({game.totalReviews || 0} reseñas)
                             </div>
                         </div>
                         <div className="game-actions">
@@ -115,7 +119,7 @@ const GameList = () => {
                 <div className="review-section">
                     <h3>Escribir Reseña para {selectedGame.title}</h3>
                     <ReviewForm 
-                        gameId={selectedGame._id} 
+                        gameId={selectedGame.id} 
                         onReviewSubmit={() => {
                             setShowReviewForm(false);
                             setSelectedGame(null);

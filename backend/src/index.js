@@ -7,9 +7,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Importación de rutas
-const authRoutes = require('./routes/auth.routes');
-const gameRoutes = require('./routes/game.routes');
-const reviewRoutes = require('./routes/review.routes');
+const authRoutes = require('./adapters/inbound/routes/auth.routes');
+const gameRoutes = require('./adapters/inbound/routes/game.routes');
+const reviewRoutes = require('./adapters/inbound/routes/review.routes');
 
 const app = express();
 

@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "description": "Proyecto 60FPS",
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev": "concurrently \"npm:dev:*\"",
     "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm run dev",
-    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+    "dev:gateway": "cd microservices/api-gateway && npm run dev",
+    "dev:auth": "cd microservices/auth-service && npm run dev",
+    "dev:games": "cd microservices/games-service && npm run dev",
+    "dev:reviews": "cd microservices/reviews-service && npm run dev",
+    "install:all": "npm install && npm install --prefix frontend && npm install --prefix microservices/api-gateway && npm install --prefix microservices/auth-service && npm install --prefix microservices/games-service && npm install --prefix microservices/reviews-service",
+    "install:frontend": "cd frontend && npm install",
+    "install:gateway": "cd microservices/api-gateway && npm install",
+    "install:auth": "cd microservices/auth-service && npm install",
+    "install:games": "cd microservices/games-service && npm install",
+    "install:reviews": "cd microservices/reviews-service && npm install"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
   }
-} 
+}

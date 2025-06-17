@@ -22,11 +22,19 @@ const GameList = () => {
     const fetchGames = async () => {
         try {
             const response = await axios.get('/api/games');
-            setGames(response.data);
-            setLoading(false);
+            console.log('Respuesta de la API inicial:', response.data); // Log para depurar
+
+            if (Array.isArray(response.data)) {
+                setGames(response.data);
+            } else {
+                console.warn('La respuesta de la API inicial no es un array:', response.data);
+                setGames([]); // Prevenir crash
+            }
         } catch (error) {
-            setError('Error al cargar los videojuegos');
-            setLoading(false);
+            console.error('Error al cargar los videojuegos:', error);
+            setError('Error al cargar los videojuegos. Ver la consola para más detalles.');
+        } finally {
+            setLoading(false); // Asegurarse de que loading siempre termine
         }
     };
 
@@ -34,9 +42,18 @@ const GameList = () => {
         e.preventDefault();
         try {
             const response = await axios.get(`/api/games/search?query=${searchQuery}`);
-            setGames(response.data);
+            console.log('Respuesta de la API de búsqueda:', response.data); // Mantenemos esto para depurar
+
+            // Verificación defensiva: asegurar que la respuesta sea un array
+            if (Array.isArray(response.data)) {
+                setGames(response.data);
+            } else {
+                console.warn('La respuesta de la API no es un array:', response.data);
+                setGames([]); // Establecer un array vacío para prevenir el crash
+            }
         } catch (error) {
-            setError('Error al buscar videojuegos');
+            console.error('Error al buscar videojuegos:', error); // Registrar el objeto de error completo
+            setError('Error al buscar videojuegos. Ver la consola para más detalles.');
         }
     };
 

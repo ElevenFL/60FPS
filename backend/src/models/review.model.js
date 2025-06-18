@@ -32,7 +32,6 @@ const reviewSchema = new mongoose.Schema({
     }
 });
 
-// Middleware para actualizar el rating promedio del juego
 reviewSchema.post('save', async function() {
     const Game = mongoose.model('Game');
     const game = await Game.findById(this.game);
@@ -45,7 +44,6 @@ reviewSchema.post('save', async function() {
     await game.save();
 });
 
-// Índices para búsquedas eficientes
 reviewSchema.index({ game: 1, user: 1 }, { unique: true });
 
 module.exports = mongoose.model('Review', reviewSchema); 

@@ -23,7 +23,6 @@ npm run dev
 ### Requisitos previos
 
 - Node.js y npm
-- MongoDB
 
 ### Clonar el repositorio
 ```bash

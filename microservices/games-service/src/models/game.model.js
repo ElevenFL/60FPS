@@ -41,7 +41,6 @@ const gameSchema = new mongoose.Schema({
     }
 });
 
-// Índices para búsquedas eficientes
 gameSchema.index({ title: 'text', genre: 'text' });
 
 module.exports = mongoose.model('Game', gameSchema);

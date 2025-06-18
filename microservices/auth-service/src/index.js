@@ -5,14 +5,11 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Rutas
 app.use('/api/auth', require('./routes/auth.routes'));
 
-// Conectar a MongoDB y arrancar el servidor
 const PORT = process.env.AUTH_PORT || 4001;
 const MONGODB_URI = process.env.MONGODB_URI;
 

@@ -13,7 +13,7 @@ exports.getAllReviews = async (req, res) => {
     }
 };
 
-// Obtener reseñas por videojuego
+// Obtener reseñas por juego
 exports.getReviewsByGame = async (req, res) => {
     try {
         const reviews = await Review.find({ game: req.params.gameId })
@@ -45,7 +45,6 @@ exports.getReviewsByUser = async (req, res) => {
 exports.createReview = async (req, res) => {
     try {
         const { gameId, rating, content } = req.body;
-        // El ID de usuario vendrá en un header desde el API Gateway
         const userId = req.header('X-User-Id');
         if (!userId) {
             return res.status(401).json({ message: 'No se proporcionó ID de usuario' });

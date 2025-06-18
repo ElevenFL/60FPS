@@ -30,7 +30,6 @@ const reviewSchema = new mongoose.Schema({
     }
 });
 
-// Índices para búsquedas eficientes
 reviewSchema.index({ game: 1, user: 1 }, { unique: true });
 
 module.exports = mongoose.model('Review', reviewSchema);

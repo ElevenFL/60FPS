@@ -41,7 +41,6 @@ const GameList = () => {
     };
 
     const handleGameClick = (gameId, e) => {
-        // Evitar la navegación si se hizo clic en el botón de reseña
         if (e.target.closest('.review-button')) {
             return;
         }

@@ -31,11 +31,9 @@ const AuthForm = ({ isLogin }) => {
             });
             
             if (response.data.token) {
-                // Guardar token en localStorage
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 
-                // Redirigir al usuario
                 navigate('/');
             } else {
                 setError('Error en la respuesta del servidor');

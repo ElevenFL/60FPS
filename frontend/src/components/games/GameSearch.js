@@ -45,7 +45,6 @@ const GameSearch = ({ onGameSelect }) => {
 
             const gameData = response.data;
             
-            // Mapear los datos de RAWG a nuestro formato
             const mappedGame = {
                 title: gameData.name,
                 description: gameData.description_raw || gameData.description,

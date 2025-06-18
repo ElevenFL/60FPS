@@ -1,12 +1,10 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 
-// Registro de usuario
 exports.register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        // Verificar si el usuario ya existe
         const existingUser = await User.findOne({ 
             $or: [{ email }, { username }] 
         });
@@ -17,7 +15,6 @@ exports.register = async (req, res) => {
             });
         }
 
-        // Crear nuevo usuario
         const user = new User({
             username,
             email,
@@ -26,7 +23,6 @@ exports.register = async (req, res) => {
 
         await user.save();
 
-        // Generar token
         const token = jwt.sign(
             { userId: user._id },
             process.env.JWT_SECRET || 'tu_secreto_jwt',
@@ -50,12 +46,10 @@ exports.register = async (req, res) => {
     }
 };
 
-// Login de usuario
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Buscar usuario
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(401).json({ 
@@ -63,7 +57,6 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Verificar contraseña
         const isMatch = await user.comparePassword(password);
         if (!isMatch) {
             return res.status(401).json({ 
@@ -71,7 +64,6 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Generar token
         const token = jwt.sign(
             { userId: user._id },
             process.env.JWT_SECRET || 'tu_secreto_jwt',

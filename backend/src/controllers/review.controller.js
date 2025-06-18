@@ -1,7 +1,6 @@
 const Review = require('../models/review.model');
 const Game = require('../models/game.model');
 
-// Obtener todas las reseñas
 exports.getAllReviews = async (req, res) => {
     try {
         const reviews = await Review.find()
@@ -17,7 +16,6 @@ exports.getAllReviews = async (req, res) => {
     }
 };
 
-// Obtener reseñas por videojuego
 exports.getReviewsByGame = async (req, res) => {
     try {
         const reviews = await Review.find({ game: req.params.gameId })
@@ -32,7 +30,6 @@ exports.getReviewsByGame = async (req, res) => {
     }
 };
 
-// Obtener reseñas por usuario
 exports.getReviewsByUser = async (req, res) => {
     try {
         const reviews = await Review.find({ user: req.params.userId })
@@ -47,12 +44,10 @@ exports.getReviewsByUser = async (req, res) => {
     }
 };
 
-// Crear una nueva reseña
 exports.createReview = async (req, res) => {
     try {
         const { gameId, rating, content } = req.body;
         
-        // Verificar si el usuario ya tiene una reseña para este juego
         const existingReview = await Review.findOne({
             user: req.userId,
             game: gameId
@@ -86,7 +81,6 @@ exports.createReview = async (req, res) => {
     }
 };
 
-// Actualizar una reseña
 exports.updateReview = async (req, res) => {
     try {
         const review = await Review.findOne({
@@ -119,7 +113,6 @@ exports.updateReview = async (req, res) => {
     }
 };
 
-// Eliminar una reseña
 exports.deleteReview = async (req, res) => {
     try {
         const review = await Review.findOneAndDelete({

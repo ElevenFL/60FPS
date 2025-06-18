@@ -1,6 +1,5 @@
 const Game = require('../models/game.model');
 
-// Obtener todos los videojuegos
 exports.getAllGames = async (req, res) => {
     try {
         const games = await Game.find()
@@ -14,7 +13,6 @@ exports.getAllGames = async (req, res) => {
     }
 };
 
-// Obtener un videojuego por ID
 exports.getGameById = async (req, res) => {
     try {
         const game = await Game.findById(req.params.id);
@@ -30,7 +28,6 @@ exports.getGameById = async (req, res) => {
     }
 };
 
-// Crear un nuevo videojuego
 exports.createGame = async (req, res) => {
     try {
         const game = new Game(req.body);
@@ -44,7 +41,6 @@ exports.createGame = async (req, res) => {
     }
 };
 
-// Actualizar un videojuego
 exports.updateGame = async (req, res) => {
     try {
         const game = await Game.findByIdAndUpdate(
@@ -64,7 +60,6 @@ exports.updateGame = async (req, res) => {
     }
 };
 
-// Eliminar un videojuego
 exports.deleteGame = async (req, res) => {
     try {
         const game = await Game.findByIdAndDelete(req.params.id);
@@ -80,7 +75,6 @@ exports.deleteGame = async (req, res) => {
     }
 };
 
-// Buscar videojuegos
 exports.searchGames = async (req, res) => {
     try {
         const { query } = req.query;

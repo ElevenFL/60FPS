@@ -78,7 +78,7 @@ const GameList = () => {
                                 <img 
                                     src={game.imageUrl} 
                                     alt={game.title}
-                                    onError={(e) => e.currentTarget.style.display = 'none'} // oculta si falla imagen
+                                    onError={(e) => e.currentTarget.style.display = 'none'}
                                     loading="lazy"
                                 />
                             </div>
